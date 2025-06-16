@@ -1,0 +1,145 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #e0f2f7;
+    color: #333;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+h1 {
+    color: #0288d1;
+    margin-bottom: 25px;
+    font-size: 2.5em;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+button {
+    padding: 12px 25px;
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #43a047;
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.game-message {
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    color: #01579b;
+    text-align: center;
+    min-height: 30px;
+    font-weight: bold;
+}
+
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas de igual ancho, ajustándose al contenedor */
+    gap: 15px;
+    width: 90%;
+    max-width: 760px;
+    margin: 0 auto 20px auto;
+    padding: 15px;
+    background-color: #bbdefb;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    aspect-ratio: 4 / 3; /* Esto está definiendo la altura de la cuadrícula */
+}
+
+.card {
+    width: 170px;
+    padding-bottom: 133.33%;
+    position: relative;
+    border: 3px solid #039be5;
+    border-radius: 10px;
+    background-color: #ffffff;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease, opacity 0.3s ease;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.card img {
+    position: absolute;
+    /* Centrado horizontal y vertical */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Ajusta la posición en base al tamaño de la imagen */
+
+    /* Tus propiedades existentes, ajustadas */
+    width: 100%; /* La imagen ocupará el 100% del ancho del padre */
+    height: 100%; /* La imagen ocupará el 100% del alto del padre */
+    object-fit: contain; /* Ajusta la imagen para que quepa sin ser cortada, manteniendo su relación de aspecto */
+    padding: 8%; /* Sigue creando un margen interno de 8% alrededor de la imagen */
+    backface-visibility: hidden;
+    transition: transform 0.3s ease;
+}
+
+.card.matched {
+    opacity: 0.8;
+    cursor: default;
+    border-color: #66bb6a;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transform: scale(0.98);
+}
+
+@media (max-width: 600px) {
+    .game-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        width: 95%;
+        max-width: none;
+        aspect-ratio: auto;
+    }
+
+    .card {
+        padding-bottom: 100%;
+        border-radius: 8px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+        margin-bottom: 15px;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 1em;
+        margin-bottom: 15px;
+    }
+
+    .game-message {
+        font-size: 1em;
+        min-height: 25px;
+    }
+}
+
+body::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+}
+body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}

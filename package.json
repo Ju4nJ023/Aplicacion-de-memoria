@@ -1,0 +1,28 @@
+{
+  "name": "hospital",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "test": "vitest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ju4nJ023/hospital.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Ju4nJ023/hospital/issues"
+  },
+  "homepage": "https://github.com/Ju4nJ023/hospital#readme",
+  "description": "",
+  "dependencies": {
+    "node-modules": "^0.0.1"
+  },
+  "devDependencies": {
+    "vitest": "^3.0.9"
+  }
+}
