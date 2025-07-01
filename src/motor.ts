@@ -1,10 +1,11 @@
 import { Carta, Tablero } from './modelo';
 
+const getRandomNumber = (index: number) => Math.floor(Math.random() * (index + 1));
 
 export const barajarCartas = (cartas: Carta[]): Carta[] => {
   const cartasBarajadas = [...cartas];
   for (let i = cartasBarajadas.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
+    const j = getRandomNumber(i);
     // Intercambio de elementos
     let temp = cartasBarajadas[i];
     cartasBarajadas[i] = cartasBarajadas[j];
@@ -37,10 +38,6 @@ export const sePuedeVoltearLaCarta = (tablero: Tablero, indice: number): boolean
  * Voltea una carta en el índice especificado y actualiza el estado del tablero.
  */
 export const voltearLaCarta = (tablero: Tablero, indice: number): void => {
-  if (!sePuedeVoltearLaCarta(tablero, indice)) {
-    console.warn(`[Motor] Intento de voltear carta no permitida en el índice: ${indice}.`);
-    return;
-  }
 
   tablero.cartas[indice].estaVuelta = true;
 
@@ -58,19 +55,13 @@ export const voltearLaCarta = (tablero: Tablero, indice: number): void => {
  * Comprueba si dos cartas, identificadas por sus índices, forman una pareja.
  */
 export const sonPareja = (indiceA: number, indiceB: number, tablero: Tablero): boolean => {
-  if (indiceA === indiceB) {
-    return false;
-  }
+
 
   const cartaA = tablero.cartas[indiceA];
   const cartaB = tablero.cartas[indiceB];
 
-  // Si los IDs de foto son iguales, son pareja.
-  if (cartaA.idFoto === cartaB.idFoto) {
-    return true;
-  } else {
-    return false;
-  }
+
+  return cartaA.idFoto === cartaB.idFoto
 };
 
 /**
@@ -108,13 +99,8 @@ export const parejaNoEncontrada = (tablero: Tablero, indiceA: number, indiceB: n
  * Comprueba si la partida ha sido completada.
  */
 export const esPartidaCompleta = (tablero: Tablero): boolean => {
-  // Recorre todas las cartas para ver si todas están encontradas.
-  for (let i = 0; i < tablero.cartas.length; i++) {
-    if (!tablero.cartas[i].encontrada) {
-      return false;
-    }
-  }
-  return true; // Si llega aquí, todas están encontradas.
+  return tablero.cartas.every(carta => carta.encontrada && carta.estaVuelta);
+
 };
 
 /**

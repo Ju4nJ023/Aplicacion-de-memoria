@@ -26,8 +26,8 @@ export interface Carta {
 const crearCartaInicial = (idFoto: number, imagen: string): Carta => ({
   idFoto,
   imagen,
-  estaVuelta: false, 
-  encontrada: false, 
+  estaVuelta: false,
+  encontrada: false,
 });
 
 // Función para crear la colección completa de cartas para el tablero (duplicadas y sin barajar aún)
@@ -35,7 +35,7 @@ const crearColeccionDeCartasInicial = (infoCartas: InfoCarta[]): Carta[] => {
   // Duplicamos las infoCartas
   const infoCartasDuplicadas = [...infoCartas, ...infoCartas];
 
- 
+
   // Usamos un bucle for en lugar de map para simplificar
   const cartasGeneradas: Carta[] = [];
   for (let i = 0; i < infoCartasDuplicadas.length; i++) {
@@ -47,25 +47,25 @@ const crearColeccionDeCartasInicial = (infoCartas: InfoCarta[]): Carta[] => {
 
 
 export type EstadoPartida =
-  | "PartidaNoIniciada" 
-  | "CeroCartasLevantadas" 
-  | "UnaCartaLevantada" 
-  | "DosCartasLevantadas" 
-  | "PartidaCompleta"; 
+  | "PartidaNoIniciada"
+  | "CeroCartasLevantadas"
+  | "UnaCartaLevantada"
+  | "DosCartasLevantadas"
+  | "PartidaCompleta";
 
 // Interfaz que define el estado global del tablero de juego
 export interface Tablero {
-  cartas: Carta[]; 
-  estadoPartida: EstadoPartida; 
-  indiceCartaVolteadaA?: number; 
-  indiceCartaVolteadaB?: number; 
+  cartas: Carta[];
+  estadoPartida: EstadoPartida;
+  indiceCartaVolteadaA?: number;
+  indiceCartaVolteadaB?: number;
 }
 
 export const crearTableroInicial = (): Tablero => ({
 
   cartas: crearColeccionDeCartasInicial(infoCartas),
-  estadoPartida: "PartidaNoIniciada", 
-  indiceCartaVolteadaA: undefined, 
+  estadoPartida: "PartidaNoIniciada",
+  indiceCartaVolteadaA: undefined,
   indiceCartaVolteadaB: undefined,
 });
 
